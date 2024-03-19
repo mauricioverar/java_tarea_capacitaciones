@@ -2,15 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main {// clase
+
+//    @Override
+//    public boolean equals(Object obj) { // metodo
+//        return super.equals(obj);
+//    }
+
+    public static void main(String[] args) { // funcion
 
         // variables de entrada
         Scanner leer = new Scanner(System.in);
         int cantidad_asistentes, duracion, edad=17, menor25=0, edad26_35=0, mayor35=0;
         String RUT, nombre="", direccion="", comuna="", telefono, fecha, hora, lugar="", nombre_asistente="";
         String patron_telefono = "\\d{3}\\d{3}\\d{4}"; // valido
-        String patron_RUT = "\\b[0-9|.]{1,10}\\-[K|k|0-9]"; // valido
+        //String patron_RUT = "\\b[0-9|.]{1,10}\\-[K|k|0-9]"; // no funciona
+        //String patron_RUT = "[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}$"; // valido con puntos
+        String patron_RUT = "^(\\d{1,2}(?:[\\.]?\\d{3}){2}-[\\dkK])$"; // valido con puntos
+        //""^(\d{1,2}(?:[\.]?\d{3}){2}-[\dkK])$""
         String patron_fecha = "^\\d{2}-\\d{2}-\\d{4}$";
         String patron_hora = "^\\d{2}:\\d{2}$";
 
@@ -37,7 +46,7 @@ public class Main {
             if (nombre.isEmpty()) {
                 System.out.println("debe ingresar el nombre");
             }
-        }
+        }// while (!" ".equals(lee.nextLine()))
 
         // validar direccion cliente
         while (direccion.isEmpty()) {
@@ -113,7 +122,7 @@ public class Main {
         } while (cantidad_asistentes <= 0);
         
 
-
+// datos de los asistentes
         for (int i = 0; i < cantidad_asistentes; i++) {
             //leer.nextLine();
             // validar nombre asistente
@@ -140,7 +149,7 @@ public class Main {
 
         }
         
-        // salida
+        // salida, mostrar datos de la capacitacion y asistentes menores a 25, mayores a 35 y los de 26 a 35 años
         System.out.println("**************************");
         System.out.println("Datos para la capacitacion");
         System.out.println("Empresa: " + nombre);
@@ -168,9 +177,12 @@ public class Main {
         System.out.println("Personas entre 26 y 35: " + edad26_35);//entre 26 y 35
         System.out.println("Personas mayores de 35: " + mayor35);// mayor
 
-        leer.close();
-    }
-}
+        leer.close(); // cerrar Scanner
+
+    } // cierre de la funcion main
+} // cierre de la clase Main
+
+
 
 // 18 22 24
 // 26 35 33
